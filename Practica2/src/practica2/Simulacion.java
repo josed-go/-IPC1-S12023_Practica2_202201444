@@ -1,12 +1,7 @@
 package practica2;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -32,73 +27,48 @@ public class Simulacion extends javax.swing.JFrame implements Runnable{
     JLabel labelP = new JLabel();
     JLabel labelE = new JLabel();
     JLabel labelS = new JLabel();
+    JLabel labelInicio = new JLabel();
+    JLabel labelFinal = new JLabel();
+    Font labelFont = new Font("Dialog", Font.BOLD, 18);
     public Simulacion() {
         initComponents();
                 
         Botones(false);
-        //jLabel1.setVisible(false);
-        /*labelI.setAlignmentX( 0.77f);
-        labelI.setAlignmentY(0.579f);
-        labelI.setFont(new Font("Dialog",Font.BOLD, 18));
-        labelI.setText("INVENTARIO: 0");
-        panelSectores.add(labelI);
         
-        labelP.setText("PRODUCCIÓN: 0");
-        labelP.setAlignmentX(0.73f);
-        labelP.setAlignmentY(0.108f);
-        labelP.setFont(new Font("Dialog",Font.BOLD, 18));
-        panelSectores.add(labelP);*/
-        //Menu menu = new Menu();
-        
-        //MateriaPrima mp1 = new MateriaPrima(panelSectores);
-        /*MateriaPrima mp2 = new MateriaPrima(panelSectores);
-        MateriaPrima mp3 = new MateriaPrima(panelSectores);
-        MateriaPrima mp4 = new MateriaPrima(panelSectores);
-        MateriaPrima mp5 = new MateriaPrima(panelSectores);
-        MateriaPrima mp6 = new MateriaPrima(panelSectores);
-        MateriaPrima mp7 = new MateriaPrima(panelSectores);
-        MateriaPrima mp8 = new MateriaPrima(panelSectores);
-        MateriaPrima mp9 = new MateriaPrima(panelSectores);
-        MateriaPrima mp10 = new MateriaPrima(panelSectores);
-        MateriaPrima mp11 = new MateriaPrima(panelSectores);
-        MateriaPrima mp12 = new MateriaPrima(panelSectores);
-        MateriaPrima mp13 = new MateriaPrima(panelSectores);
-        MateriaPrima mp14 = new MateriaPrima(panelSectores);
-        MateriaPrima mp15 = new MateriaPrima(panelSectores);
-        MateriaPrima mp16 = new MateriaPrima(panelSectores);
-        MateriaPrima mp17 = new MateriaPrima(panelSectores);
-        MateriaPrima mp18 = new MateriaPrima(panelSectores);
-        MateriaPrima mp19 = new MateriaPrima(panelSectores);
-        MateriaPrima mp20 = new MateriaPrima(panelSectores);*/
+        labelInicio.setBounds(803,673, 150,25);
+        labelInicio.setFont(labelFont);
+        labelInicio.setText("INICIO: 30");
+        panelS.add(labelInicio, JLayeredPane.DRAG_LAYER);
+                
+        labelFinal.setBounds(162,673, 150,25);
+        labelFinal.setFont(labelFont);
+        labelFinal.setText("FINAL: 0");
+        panelS.add(labelFinal, JLayeredPane.DRAG_LAYER);
         
         labelI.setBounds(693,387,300,25);
-        labelI.setFont(new Font("Dialog", Font.BOLD, 18));
+        labelI.setFont(labelFont);
         labelI.setText("INVENTARIO: 0");
         panelS.add(labelI, JLayeredPane.DRAG_LAYER);
+        
+        labelP.setBounds(693,30, 300, 25);
+        labelP.setFont(labelFont);
+        labelP.setText("PRODUCCIÓN: 0");
+        panelS.add(labelP, JLayeredPane.DRAG_LAYER);
+        
+        labelE.setBounds(52,30, 300, 25);
+        labelE.setFont(labelFont);
+        labelE.setText("EMPAQUETADO: 0");
+        panelS.add(labelE, JLayeredPane.DRAG_LAYER);
+        
+        labelS.setBounds(52,387, 300, 25);
+        labelS.setFont(labelFont);
+        labelS.setText("SALIDA: 0");
+        panelS.add(labelS, JLayeredPane.DRAG_LAYER);
 
         crono.LabelTiempo(lblTiempo);
         crono.start();
         Thread hiloP = new Thread(this);
         hiloP.start();
-        /*mp2.start();
-        mp3.start();
-        mp4.start();
-        mp5.start();
-        mp6.start();
-        mp7.start();
-        mp8.start();
-        mp9.start();
-        mp10.start();
-        mp11.start();
-        mp12.start();
-        mp13.start();
-        mp14.start();
-        mp15.start();
-        mp16.start();
-        mp17.start();
-        mp18.start();
-        mp19.start();
-        mp20.start();*/
         
         Sectores sec = new Sectores();
         panelSectores.add(sec);
@@ -362,8 +332,8 @@ public class Simulacion extends javax.swing.JFrame implements Runnable{
     @Override
     public void run() {
         
-        while(Global.contadorBolitasS < 10) {
-            MateriaPrima mp1 = new MateriaPrima(panelSectores, labelI);
+        while(Global.contadorBolitasS < 30) {
+            MateriaPrima mp1 = new MateriaPrima(panelSectores, labelI, labelP, labelE, labelS, labelInicio, labelFinal);
                 mp1.start();
                 
             try {
@@ -374,11 +344,11 @@ public class Simulacion extends javax.swing.JFrame implements Runnable{
             }
         }
         
-        while(Global.contadorBolitasE < 10) {
+        while(Global.contadorBolitasE < 30) {
             Botones(false);
             System.out.println("");
         }
-        if(Global.contadorBolitasE == 10) {
+        if(Global.contadorBolitasE == 30) {
             crono.stop();
             JOptionPane.showMessageDialog(this, "Simulación finalizada.");
             System.out.println("");
