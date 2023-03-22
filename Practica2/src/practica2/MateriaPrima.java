@@ -181,7 +181,12 @@ public class MateriaPrima extends Thread{
                 labelFinal.setText("FINAL: "+contadorFinal);
                 Global.contadorBolitasE = Global.contadorBolitasE+1;
                 System.out.println("Final "+Global.contadorBolitasE);
-
+                if(contadorFinal == 30) {
+                    contadorInicio = 30;
+                    contadorFinal = 0;
+                }
+                
+                
             }
 
     }
