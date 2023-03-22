@@ -13,7 +13,7 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     
-    static ArrayList<Sector> arrayS = new ArrayList<>();
+    public static ArrayList<Sector> arrayS = new ArrayList<>();
     
     public Menu() {
         initComponents();
@@ -50,32 +50,35 @@ public class Menu extends javax.swing.JFrame {
         btnIniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 48)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(52, 186, 171));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabel2.setText("MONKEY");
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setText("MENÚ PRINCIPAL");
+
+        jSeparator1.setBackground(new java.awt.Color(72, 68, 80));
+        jSeparator1.setForeground(new java.awt.Color(72, 68, 80));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(296, 296, 296)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(251, 251, 251)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 255, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator1)))
+                .addContainerGap()
+                .addComponent(jSeparator1)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(285, 285, 285))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(236, 236, 236))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +158,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtT1)
@@ -247,15 +250,16 @@ public class Menu extends javax.swing.JFrame {
                 arrayS.add(new Sector("PRODUCCION", txtT2.getText(), txtC2.getText()));
                 arrayS.add(new Sector("EMPAQUETADO", txtT3.getText(), txtC3.getText()));
                 arrayS.add(new Sector("SALIDA", txtT4.getText(), txtC4.getText()));
+                this.setVisible(false);
+                Simulacion simu = new Simulacion();
+                simu.setVisible(true);  
             } else {
                 JOptionPane.showMessageDialog(this, "Solo se permiten números enteros.");
             }
         } else {
             JOptionPane.showMessageDialog(this, "Debes rellenar todos los campos.");
         }
-        this.setVisible(false);
-        Simulacion simu = new Simulacion();
-        simu.setVisible(true);        
+              
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private boolean ValidarDatos() {
