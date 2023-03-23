@@ -16,8 +16,13 @@ public class MateriaPrima extends Thread{
     javax.swing.JLabel labelS;
     javax.swing.JLabel labelInicio;
     javax.swing.JLabel labelFinal;
+    javax.swing.JLayeredPane panelS;
         
     Bolita bolita;
+    LabelSector lbl1;
+    LabelSector lbl2;
+    LabelSector lbl3;
+    LabelSector lbl4;
     Menu menu = new Menu();
     
     static int contadorI = 0;
@@ -27,7 +32,7 @@ public class MateriaPrima extends Thread{
     static int contadorInicio = 30;
     static int contadorFinal = 0;
     
-    public MateriaPrima(javax.swing.JPanel panel, javax.swing.JLabel labelI, javax.swing.JLabel labelP, javax.swing.JLabel labelE, javax.swing.JLabel labelS, javax.swing.JLabel labelInicio, javax.swing.JLabel labelFinal) {
+    public MateriaPrima(javax.swing.JPanel panel, javax.swing.JLabel labelI, javax.swing.JLabel labelP, javax.swing.JLabel labelE, javax.swing.JLabel labelS, javax.swing.JLabel labelInicio, javax.swing.JLabel labelFinal, javax.swing.JLayeredPane panelS) {
         this.panelSectores = panel;
         this.labelI = labelI;
         this.labelP = labelP;
@@ -35,6 +40,7 @@ public class MateriaPrima extends Thread{
         this.labelS = labelS;
         this.labelInicio = labelInicio;
         this.labelFinal = labelFinal;
+        this.panelS = panelS;
     }
     
     @Override
@@ -52,6 +58,7 @@ public class MateriaPrima extends Thread{
                     if(i==50){
                         contadorInicio = contadorInicio-1;
                         labelInicio.setText("INICIO: "+contadorInicio);
+                        lbl1 = new LabelSector(panelS, 691,412, new Color(153,210,242));
                     }
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MateriaPrima.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,6 +89,8 @@ public class MateriaPrima extends Thread{
                     if(i == 50){
                         contadorI = contadorI-1;
                         labelI.setText("INVENTARIO: "+contadorI);
+                        lbl1.Visibilidad(false);
+                        
                     }
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MateriaPrima.class.getName()).log(Level.SEVERE, null, ex);
@@ -91,6 +100,7 @@ public class MateriaPrima extends Thread{
             
             if(bolita.getPosicionY() == 201) {
                 contadorP++;
+                lbl2 = new LabelSector(panelS, 691,55, new Color(227,250,227));
                 System.out.println("Estoy dentro produccion");
                 labelP.setText("PRODUCCIÓN: "+contadorP);
                 bolita.CambiarColor(new Color(227,250,227));
@@ -111,6 +121,7 @@ public class MateriaPrima extends Thread{
                     if(i == 50){
                         contadorP = contadorP-1;
                         labelP.setText("PRODUCCIÓN: "+contadorP);
+                        lbl2.setVisible(false);
                     }
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MateriaPrima.class.getName()).log(Level.SEVERE, null, ex);
@@ -120,6 +131,7 @@ public class MateriaPrima extends Thread{
             
             if(bolita.getPosicionX() == 300) {
                 contadorE++;
+                lbl3 = new LabelSector(panelS, 50,55, new Color(244,217,255));
                 System.out.println("Estoy dentro empaquetado");
                 labelE.setText("EMPAQUETADO: "+contadorE);
                 bolita.CambiarColor(new Color(244,217,255));
@@ -140,6 +152,7 @@ public class MateriaPrima extends Thread{
                     if(i == 50){
                         contadorE = contadorE-1;
                         labelE.setText("EMPAQUETADO: "+contadorE);
+                        lbl3.Visibilidad(false);
                     }
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MateriaPrima.class.getName()).log(Level.SEVERE, null, ex);
@@ -149,6 +162,7 @@ public class MateriaPrima extends Thread{
             
             if(bolita.getPosicionY() == 387) {
                 contadorS++;
+                lbl4 = new LabelSector(panelS, 50,412, new Color(255,217,217));
                 System.out.println("Estoy dentro salida");
                 labelS.setText("SALIDA: "+contadorS);
                 bolita.CambiarColor(new Color(255,217,217));
@@ -168,6 +182,8 @@ public class MateriaPrima extends Thread{
                     if(i == 50){
                         contadorS = contadorS-1;
                         labelS.setText("SALIDA: "+contadorS);
+                        lbl4.Visibilidad(false);
+                        
                     }
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MateriaPrima.class.getName()).log(Level.SEVERE, null, ex);

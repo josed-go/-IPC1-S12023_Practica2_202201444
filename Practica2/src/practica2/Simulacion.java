@@ -72,7 +72,6 @@ public class Simulacion extends javax.swing.JFrame implements Runnable{
         
         Sectores sec = new Sectores();
         panelSectores.add(sec);
-        //panelS.add(sec, JLayeredPane.DEFAULT_LAYER);
         
     }
 
@@ -333,7 +332,7 @@ public class Simulacion extends javax.swing.JFrame implements Runnable{
     public void run() {
         
         while(Global.contadorBolitasS < 30) {
-            MateriaPrima mp1 = new MateriaPrima(panelSectores, labelI, labelP, labelE, labelS, labelInicio, labelFinal);
+            MateriaPrima mp1 = new MateriaPrima(panelSectores, labelI, labelP, labelE, labelS, labelInicio, labelFinal, panelS);
                 mp1.start();
                 
             try {

@@ -57,31 +57,8 @@ public class Bolita extends JComponent{
         super.paintComponent(g);
         g2d.setColor(Color.black);
         g2d.draw(c);
-        //g2d.fillOval(x, y, 50, 50);
-        //g.dispose();*/
-        //g2d.dispose();
-        //panel.repaint();
         this.repaint();
         
     }
 
-    /*@Override
-    public void run() {
-        //panel.add(this);
-        while(contador != 30) {
-            try{
-                Thread.sleep(100);
-                this.PosicionX(816);
-                this.PosicionY(635);
-                for(int i =635; i<=735; i--) {
-                    Thread.sleep(20);
-                    this.PosicionY(i);
-                }
-                System.out.println("bolita"+ contador);
-                contador++;
-            }catch (Exception e) {
-                
-            }
-        }
-    }*/
 }
