@@ -45,32 +45,16 @@ public class LabelSector extends JLabel {
             if(ValidarPosicionX(posiXA)) {
                 do {
                     posiXA =  (int) (Math.random()*((this.x+275)+1-this.x))+this.x;
-                    //posiXA =  rX.nextInt((x+300)+1-x)+x;
                     arrayX.add(posiXA);
                 }while(!ValidarPosicionX(posiXA));
             }
             if(ValidarPosicionY(posiXA)) {
                 do {
-                    //
                     posiYA = (int) (Math.random()*((this.y+171)+1-this.y))+this.y;
                     arrayY.add(posiYA);
                 }while(!ValidarPosicionY(posiYA));
             }
             
-            /*do {
-                //posiXA =  (int) (Math.random()*((this.x+300)+1-this.x))+this.x;
-                posiXA =  rX.nextInt((x+300)+1-x)+x;
-                arrayX.add(posiXA);
-            }while(ValidarPosicionX(posiXA) == true);
-            do {
-                //
-                posiYA = rY.nextInt((y+171)+1-y)+y;
-                arrayY.add(posiYA);
-            }while(ValidarPosicionY(posiYA) == true);*/
-            /*posiXA = rX.nextInt((x+300)+1-x)+x;
-            posiXA = rY.nextInt((y+171)+1-y)+y;*/
-            
-            //this.setVisible(true);
             this.setBounds(posiXA, posiYA, 25, 25);
             this.panelS.add(this, JLayeredPane.DRAG_LAYER);
         }catch(Exception e){
@@ -89,10 +73,7 @@ public class LabelSector extends JLabel {
     
     public boolean ValidarPosicionY(int y) {
         for(int i =0; i < arrayY.size(); i++) {
-            System.out.println("aqui1");
             if(arrayY.get(i) == y) {
-                System.out.println("aqui");
-                System.out.println(arrayY.get(i));
                 return true;
             }
         }

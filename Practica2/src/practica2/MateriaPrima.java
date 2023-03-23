@@ -58,7 +58,7 @@ public class MateriaPrima extends Thread{
                     if(i==50){
                         contadorInicio = contadorInicio-1;
                         labelInicio.setText("INICIO: "+contadorInicio);
-                        lbl1 = new LabelSector(panelS, 691,412, new Color(153,210,242));
+                        
                     }
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MateriaPrima.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,8 +69,7 @@ public class MateriaPrima extends Thread{
             
             if(bolita.getPosicionY() == 558) {
                 contadorI++;
-                System.out.println("Estoy dentro inventario");
-                
+                lbl1 = new LabelSector(panelS, 691,412, new Color(153,210,242));
                 labelI.setText("INVENTARIO: "+contadorI);
                 bolita.CambiarColor(new Color(153,210,242));
                 try {
@@ -101,7 +100,6 @@ public class MateriaPrima extends Thread{
             if(bolita.getPosicionY() == 201) {
                 contadorP++;
                 lbl2 = new LabelSector(panelS, 691,55, new Color(227,250,227));
-                System.out.println("Estoy dentro produccion");
                 labelP.setText("PRODUCCIÓN: "+contadorP);
                 bolita.CambiarColor(new Color(227,250,227));
                 try {
@@ -132,7 +130,6 @@ public class MateriaPrima extends Thread{
             if(bolita.getPosicionX() == 300) {
                 contadorE++;
                 lbl3 = new LabelSector(panelS, 50,55, new Color(244,217,255));
-                System.out.println("Estoy dentro empaquetado");
                 labelE.setText("EMPAQUETADO: "+contadorE);
                 bolita.CambiarColor(new Color(244,217,255));
                 try {
@@ -163,7 +160,6 @@ public class MateriaPrima extends Thread{
             if(bolita.getPosicionY() == 387) {
                 contadorS++;
                 lbl4 = new LabelSector(panelS, 50,412, new Color(255,217,217));
-                System.out.println("Estoy dentro salida");
                 labelS.setText("SALIDA: "+contadorS);
                 bolita.CambiarColor(new Color(255,217,217));
                 try {
@@ -192,11 +188,9 @@ public class MateriaPrima extends Thread{
             }
             
             if(bolita.getPosicionY() == 653) {
-                System.out.println("Estoy dentro final "+Global.contadorBolitasS);
                 contadorFinal++;
                 labelFinal.setText("FINAL: "+contadorFinal);
                 Global.contadorBolitasE = Global.contadorBolitasE+1;
-                System.out.println("Final "+Global.contadorBolitasE);
                 if(contadorFinal == 30) {
                     contadorInicio = 30;
                     contadorFinal = 0;
