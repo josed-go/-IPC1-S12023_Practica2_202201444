@@ -254,7 +254,7 @@ public class Menu extends javax.swing.JFrame {
                 Simulacion simu = new Simulacion();
                 simu.setVisible(true);  
             } else {
-                JOptionPane.showMessageDialog(this, "Solo se permiten números enteros.");
+                JOptionPane.showMessageDialog(this, "Solo se permiten números enteros positivos.");
             }
         } else {
             JOptionPane.showMessageDialog(this, "Debes rellenar todos los campos.");
